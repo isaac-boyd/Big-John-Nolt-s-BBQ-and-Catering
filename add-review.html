@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <link rel="stylesheet" href="https://a015156a-d1b6-443d-b55e-fb10ea036336-00-379xiz1y6guwp.janeway.replit.dev/resources/code/style.css">
+         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+       <link rel="icon" href="./bjc_logo.png">
+        <title>Add Review - Big John Nolt's BBQ and Catering</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    </head> 
+    <body>
+      <header id="header">
+            <a href="./"><img src="bjc_logo.png" alt="Big John's Catering" id="logo"></img></a> 
+          <div onclick="showNav()" id="openNav">Menu</div>
+                <div id="links">
+                    <a href="../" class="link2 underline-left-to-right">Home</a>
+                      <a href="../hot-buffet" class="link  underline-left-to-right">Hot Buffet</a>
+                      <a href="../hor-doeuvres" class="link  underline-left-to-right">Hor D'oeuvres</a>
+
+                      <a href="../events" class="link underline-left-to-right">Event Links</a>
+
+                      <a href="../contact" class="link2 underline-left-to-right">Contact Us</a>
+
+                      
+                      <a href="../custom-menu" class="link2 underline-left-to-right">Custom Menu</a>
+                  </div>
+      </header>
+        <main>
+                   <div id="contactFormDiv">
+                <img class="contact-image" src="../resources/images/chicken.webp">
+                <form method="post" id="contactForm" action="https://formspree.io/f/mldlyaew">
+                    <h1 class="title" style="color:white;">Submit Review</h1>
+                    <div class="form-progress">
+                        <div class="progress-step active"> Step 1</div>
+                        <div class="progress-step">Step 2</div>
+                        
+                    </div>
+
+                    <fieldset>
+                        <div class="form-section active" id="section1">
+                            <label for="name">Name:</label>
+                              <input type="text" id="name" name="name" required><br><br>
+
+                              <label for="stars">Rating:</label>
+                              <div class="stars" role="radiogroup" aria-label="Star rating">
+                                <input type="radio" id="star5" name="rating" value="5" required />
+                                <label for="star5" title="5 stars" aria-label="5 stars">&#9733;</label>
+
+                                <input type="radio" id="star4" name="rating" value="4" />
+                                <label for="star4" title="4 stars" aria-label="4 stars">&#9733;</label>
+
+                                <input type="radio" id="star3" name="rating" value="3" />
+                                <label for="star3" title="3 stars" aria-label="3 stars">&#9733;</label>
+
+                                <input type="radio" id="star2" name="rating" value="2" />
+                                <label for="star2" title="2 stars" aria-label="2 stars">&#9733;</label>
+
+                                <input type="radio" id="star1" name="rating" value="1" />
+                                <label for="star1" title="1 star" aria-label="1 star">&#9733;</label>
+                              </div><br>
+<!--
+                              <span class="rating-output" id="ratingOutput">Choose a rating</span>
+-->
+
+                            <button type="button" class="next-btn" onclick="nextSection(2)">Next <i
+                                    class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+
+                      
+
+                        <div class="form-section" id="section2">
+                            <label for="review">Review:</label>
+                              <textarea id="review" name="review" rows="4" required></textarea><br><br>
+
+                              <label for="event_type">Event Type:</label>
+                              <input type="text" id="event_type" name="event_type"><br><br>
+
+                            <div class="form-nav">
+                                <button type="button" class="prev-btn" onclick="nextSection(1)"><i
+                                        class="fa-solid fa-arrow-left"></i> Previous</button>
+                                <button type="submit" class="next-btn"><pre>Submit Review! <i
+                                        class="fa-solid fa-paper-plane"></i></pre></button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            
+            
+        </main>
+
+                    <footer id="footer" style="margin-top: 70px;">
+                        <div class="footer-content">
+                            <div class="footer-section">
+                                <h3>Contact Information</h3>
+                                <p><strong><i class="fa fa-map-pin" aria-hidden="true"></i>
+                 Address:</strong><br>
+                                <a href="https://www.google.com/maps/place//@40.242637,-76.2156168,17z">415 E Mount Airy Road<br>Stevens, PA 17578</a></p>
+                                <p><strong><i class="fa fa-phone" aria-hidden="true"></i>
+                 Phone:</strong> <a href="tel:7173363730">(717) 336-3730</a></p>
+                                <p><strong><i class="fa fa-fax" aria-hidden="true"></i>
+                 Fax:</strong> <a href="tel:7173365189">(717) 336-5189</a></p>
+                            </div>
+
+                            <div class="footer-section">
+                                <h3>Our Services</h3>
+                                <ul>
+                                    <li><a href="hot-buffet">Hot Buffet Catering</a></li>
+                                    <li><a href="hor-doeuvres">Hors d'oeuvres</a></li>
+                                    <li><a href="custom-menu">Custom Menus</a></li>
+                                    <li><a href="events">Event Planning</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="footer-section">
+                                <h3>About Us</h3>
+                                <p>Established in 2002, we've been serving Lancaster County with authentic BBQ and exceptional catering services for over 20 years.</p>
+                                <div class="certifications">
+                                    <span class="cert-badge">Licensed & Certified</span>
+                                    <span class="cert-badge">Chamber Member</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="footer-bottom">
+                            <p class="stuff">Established in 2002 <pre>&#8226;</pre><a href="https://www.google.com/search?q=Chamber+of+Commerce+R1116275">Chamber of Commerce R1116275</a> <pre>&#8226;</pre> Fully Licensed and Food Certified</p><pre>&#8226;</pre>
+                            <p class="stuff">&copy; 2025 Big John Nolt's BBQ and Catering <pre>&#8226;</pre> All Rights Reserved</p>
+                        </div>
+                    </footer>
+
+                    <!-- Floating Action Buttons -->
+                    <div class="floating-actions">
+                        <a href="tel:7173363730" class="fab-item call-btn" title="Call Now">
+                            <span><i class="fa fa-phone" aria-hidden="true"></i>
+                </span>
+                        </a>
+                        <a href="contact/" class="fab-item contact-btn" title="Schedule Event">
+                            <span><i class="fa fa-calendar" aria-hidden="true"></i>
+                </span>
+                        </a>
+                    </div>
+
+                    <!-- Back to Top Button -->
+                    <button id="backToTop" class="back-to-top"  title="Back to Top"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M342.6 81.4C330.1 68.9 309.8 68.9 297.3 81.4L137.3 241.4C124.8 253.9 124.8 274.2 137.3 286.7C149.8 299.2 170.1 299.2 182.6 286.7L288 181.3L288 552C288 569.7 302.3 584 320 584C337.7 584 352 569.7 352 552L352 181.3L457.4 286.7C469.9 299.2 490.2 299.2 502.7 286.7C515.2 274.2 515.2 253.9 502.7 241.4L342.7 81.4z"/></svg></button>
+                </body>
+
+                
+    </body>
+
+    <script src="https://a015156a-d1b6-443d-b55e-fb10ea036336-00-379xiz1y6guwp.janeway.replit.dev/resources/code/script.js"></script>
+</html>

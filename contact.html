@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://a015156a-d1b6-443d-b55e-fb10ea036336-00-379xiz1y6guwp.janeway.replit.dev/resources/code/style.css">
+
+    <link rel="icon" href="../bjc_logo.png">
+    <title>Contact Us - Big John Nolt's BBQ and Catering</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <header id="header">
+        <a href="../"><img src="../bjc_logo.png" alt="Big John's Catering" id="logo"></img></a>
+        <div onclick="showNav()" id="openNav">Menu</div>
+        <div id="links">
+            <a href="../" class="link  underline-left-to-right">Home</a>
+            <a href="../hot-buffet" class="link  underline-left-to-right">Hot Buffet</a>
+            <a href="../hor-doeuvres" class="link  underline-left-to-right">Hor D'oeuvres</a>
+
+            <a href="../events" class="link underline-left-to-right">Event locations</a>
+            <a href="../contact" class="link2 underline-left-to-right">Contact Us</a>
+
+            <a href="../custom-menu" class="link2 underline-left-to-right">Custom Menu</a>
+        </div>
+    </header>
+    <main>
+       
+        <!-- Interactive Contact Form -->
+        <div id="contactFormDiv">
+            <img class="contact-image" src="https://scontent.fagc1-1.fna.fbcdn.net/v/t39.30808-6/538527123_1559767505330510_3989781196355741025_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=wfB90EgqxuAQ7kNvwEJMJT-&_nc_oc=AdnUn1VDFJiIUTrEH69aXLwyIDUngi6PT3j5KNFpqIqTPkcDIGM254_xBuNGLHVDuUhBkFMWrKYtANpwOeVRohbY&_nc_zt=23&_nc_ht=scontent.fagc1-1.fna&_nc_gid=7683PKNel2pRpKCqfeoUfA&oh=00_AfWNeK8REiRQc8_x4r0qEz7J5sEiBsHgfvIuW8IrwNo99Q&oe=68B7A83E">
+            <form method="post" id="contactForm" action="https://formspree.io/f/xovloyqr">
+                <h1 class="title" style="color:white;">Schedule Your Event Today!</h1>
+                <div class="form-progress">
+                    <div class="progress-step active">Basic Info</div>
+                    <div class="progress-step">Message</div>
+                </div>
+
+                <fieldset>
+                    <div class="form-section active" id="section1">
+                        <h3>Tell us about yourself</h3>
+                        <label>Client Name:<input type="text" name="client_name" required></label>
+                        <label>Phone Number:<input type="tel" name="phone" id="phone" required></label>
+                        <label>Email Address:<input type="email" name="email" required></label>
+                        <button type="button" class="next-btn" onclick="nextSection(2)">Next <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+
+                  
+
+                    <div class="form-section" id="section2">
+                        <h3>What do you want to say?</h3>
+                    
+
+                        <label>Message:<textarea name="additional_notes" id="notes" rows="4" placeholder="Tell us about your vision, dietary restrictions, or special requests..."></textarea></label>
+                       
+
+
+                        <div class="form-nav">
+                            <button type="button" class="prev-btn" onclick="nextSection(1)"><i class="fa-solid fa-arrow-left"></i>
+                              Previous</button>
+                            <button type="submit" class="next-btn">Send Submission<i
+                                class="fa-solid fa-paper-plane"></i></button>
+                          </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+    </main>
+
+    <footer id="footer">
+        <p class="stuff">Established in 2002 <a
+                href="https://www.google.com/search?q=Chamber+of+Commerce+R1116275">Chamber of Commerce R1116275</a>
+            Fully Licensed and Food Certified</p>
+        <p class="stuff">&copy; 2025 Big John Nolt's BBQ and Catering</p>
+        <p id="contact"><a href="https://www.google.com/maps/place//@40.242637,-76.2156168,17z">415 E Mount Airy Road
+                Stevens, PA 17578</a> Phone <a href="tel:7173363730">(717) 336-3730 </a> Fax <a
+                href="tel:7173365189">(717) 336-5189</a></p>
+
+    </footer>
+
+</body>
+
+    <script src="https://a015156a-d1b6-443d-b55e-fb10ea036336-00-379xiz1y6guwp.janeway.replit.dev/resources/code/script.js"></script>
+
+</html>
