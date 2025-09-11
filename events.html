@@ -2,8 +2,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet"
-    href="https://a015156a-d1b6-443d-b55e-fb10ea036336-00-379xiz1y6guwp.janeway.replit.dev/resources/code/style.css">
+   <link rel="stylesheet "href="../resources/code/style.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link rel="icon" href="../bjc_logo.png">
   <title>Event Locations - Big John Nolt's BBQ and Catering</title>
@@ -15,7 +14,9 @@
 
     .progress-step:hover {
       background-color: rgba(255, 255, 255, 0.5);
+      color: black;
     }
+    
   </style>
 </head>
 
@@ -27,7 +28,7 @@
     <div id="links">
       <a href="../" class="link  underline-left-to-right">Home</a>
         <a href="../hot-buffet" class="link  underline-left-to-right">Hot Buffet</a>
-        <a href="../hor-doeuvres" class="link  underline-left-to-right">Hor D'oeuvres</a>
+        <a href="../hors-doeuvres" class="link  underline-left-to-right">Hors D'oeuvres</a>
         <a href="../events" class="link underline-left-to-right">Event locations</a>
         <a href="../contact" class="link2 underline-left-to-right">Contact Us</a>
         <a href="../custom-menu" class="link2 underline-left-to-right">Custom Menu</a>
@@ -233,7 +234,28 @@
       link.target = "_blank";
       link.rel = "noopener noreferrer"; // security best practice
     });
-
+      // === Header Nav Toggle ===
+      function showNav() {
+        if (!links || !openNavBtn) return;
+        links.style.transform = 'translateX(0)';
+        openNavBtn.onclick = closeNav;
+        openNavBtn.textContent = 'Close';
+        header.style.position = 'absolute';
+      }
+      function closeNav() {
+        if (!links || !openNavBtn) return;
+        links.style.transform = 'translateX(-100%)';
+        openNavBtn.onclick = showNav;
+        openNavBtn.textContent = 'Menu';
+        header.style.position = 'fixed';
+        keepHeaderVisible();
+      }
+      if (openNavBtn) openNavBtn.onclick = showNav;
+    function keepHeaderVisible(){
+      header.style.position = 'fixed';
+      keepHeader = true;
+      header.style.transform = 'translateY(0)';
+    }
    
     // === Footer (mobile vs desktop) ===
     const footerHTML = `
@@ -548,20 +570,22 @@
       });
     }
 
-    // === Cursor Trigger Header ===
+    /*// === Cursor Trigger Header ===
     window.addEventListener('mousemove', (event) => {
       const y = event.clientY;
       if (window.scrollY > 150) {
         if (y < 50) {
           header.style.transform = 'translateY(0)';
           stayOpen = true;
-        } else if (y > 150) {
-          header.style.transform = 'translateY(-100%)';
-          stayOpen = false;
-        }
+          
+        } 
       }
     });
-
+     function hideHeader() {
+       header.style.transform = 'translateY(-100%)';
+       stayOpen = false;
+     }
+     */
     console.log(window.innerWidth <= 1200 ? "Mobile script running" : "Desktop script running");
   });
 

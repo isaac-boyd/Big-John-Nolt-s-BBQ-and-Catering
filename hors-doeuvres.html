@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <link rel="stylesheet "href="../resources/code/style.css">
+  <link rel="icon" href="../bjc_logo.png">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <title>Hors D'oeuvres - Big John Nolt's BBQ and Catering</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+  <header id="header">
+    <a href="../"><img src="../bjc_logo.png" alt="Big John's Catering" id="logo"></img></a>
+    <div onclick="showNav()" id="openNav">Menu</div>
+    <div id="links">
+      <a href="../" class="link  underline-left-to-right">Home</a>
+      <a href="../hot-buffet" class="link  underline-left-to-right">Hot Buffet</a>
+      <a href="../hors-doeuvres" class="link  underline-left-to-right">Hors D'oeuvres</a>
+
+      <a href="../events" class="link underline-left-to-right">Event locations</a>
+
+      <a href="../contact" class="link2 underline-left-to-right">Contact Us</a>
+
+      <a href="../custom-menu" class="link2 underline-left-to-right">Custom Menu</a>
+    </div>
+  </header>
+  <main>
+
+
+
+
+
+
+
+    <div id="contactFormDiv">
+      <img class="contact-image" src="../resources/images/blueberry delight.jpg">
+      <form method="post" id="contactForm" action="https://formspree.io/f/xovloyqr">
+        <h1 class="title">Hors D'oeuvres</h1>
+        <div class="form-progress">
+          <progress id="progress" max="100" value="0"></progress>
+          <div class="progress-step active">Event Info</div>
+          <div class="progress-step">Personal Details</div>
+          <div class="progress-step">Hor Doeuvres</div>
+        </div>
+
+        <fieldset>
+          <div class="form-section active" id="section1">
+            <h3>Tell us about your event</h3>
+
+            <label for="event-date">Event Date:</label>
+            <input type="date" id="event-date" class="check" name="event_date" required>
+     
+            <label for="event-location">Event Location:</label>
+            <input type="text" id="event-location" class="check" name="event_location" required>
+            <label for="serving-time">Serving Time:</label>
+            <input type="text" id="serving-time" class="check" name="serving_time" required>
+             
+            <label for="num-adults">Number of Adults:</label>
+            <input type="number" id="num-adults" class="check" name="num_adults" min="0" required>
+            <br>
+            <label for="num-children">Number of Children (4-11):</label>
+            <input type="number" id="num-children" class="check" name="num_children" min="0" required>
+
+            <label for="num-under4">Number under 4 years of age:</label>
+            <input type="number" id="num-under4" class="check" name="num_under4" min="0" required><br><br>
+            <button type="button" class="next-btn" onclick="nextSection(2)">Next <i
+                class="fa-solid fa-arrow-right"></i></button>
+          </div>
+
+          <div class="form-section" id="section2">
+            <h3>Personal Information</h3>
+            <label for="customer-name">Customer Name:</label>
+            <input type="text" id="customer-name" class="check" name="customer_name" required>
+
+            <label for="customer-address">Address:</label>
+            <input type="text" id="customer-address" class="check" name="customer_address" required>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required>
+
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" required>
+            <br>
+            <label for="zip">Zip Code:</label>
+            <input type="text" id="zip" name="zip" maxlength="10" required>
+
+            <label for="home-phone">Home Phone Number:
+              <input type="tel" name="phone" id="phone" required>
+            </label>
+            <label for="cell-phone">Cell Phone Number:
+              <input type="tel" name="phone" id="phone" required>
+            </label>
+            <div class="form-nav">
+              <button type="button" class="prev-btn" onclick="nextSection(1)"><i class="fa-solid fa-arrow-left"></i>
+                Previous</button>
+              <button type="button" class="next-btn" onclick="nextSection(3)">Next <i
+                  class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <div class="form-section" id="section3">
+            <h3 class="title">Hor D'oeuvres Select</h3>
+            <h3>Menu Selection - Entrees and Appetizers</h3>
+
+            <label><input type="checkbox" name="menu[]" value="BBQ Meatballs"> BBQ Meatballs - $3.00</label>
+            <span class="description">Meatballs topped with our special BBQ sauce.</span>
+
+            <label><input type="checkbox" name="menu[]" value="Shrimp Cocktail"> Shrimp Cocktail - $6.00</label>
+            <span class="description">Cooked, peeled and deveined shrimp served with cocktail sauce.</span>
+
+            <label><input type="checkbox" name="menu[]" value="Beef and Cheese Dip"> Beef and Cheese Dip - $3.00</label>
+            <span class="description">Beef with mild Mexican seasoned cheese dip served with tortilla chips.</span>
+
+            <label><input type="checkbox" name="menu[]" value="Salad Bar"> Salad Bar - $7.00</label>
+            <span class="description">Self-serve salad bar including fresh lettuce, a variety of salad fixings, dressings.</span>
+
+            <label><input type="checkbox" name="menu[]" value="Appetizer Salad"> Appetizer Salad - $3.00</label>
+            <span class="description">Includes single serve salads and dressings.</span>
+
+            <label><input type="checkbox" name="menu[]" value="Fresh Vegetable Platter"> Fresh Vegetable Platter - $3.00</label>
+            <span class="description">Includes celery, carrots, broccoli, peppers, cauliflower, cucumber and dip.</span>
+
+            <label><input type="checkbox" name="menu[]" value="Fresh Fruit Tray or Cups"> Fresh Fruit Tray or Cups - $3.00</label>
+            <span class="description">Includes assorted fruits and melons in season with dip.</span>
+
+            <label><input type="checkbox" name="menu[]" value="Cheese and Bologna Platter"> Cheese and Bologna Platter - $4.00</label>
+            <span class="description">Includes cubed Longhorn, Farmers, and Swiss Cheese, ring bologna and sweet bologna cubes.</span>
+
+            <label><input type="checkbox" name="menu[]" value="Cracker and Cheese Platter"> Cracker and Cheese Platter - $3.00</label>
+            <span class="description">Includes Assorted Cheeses or a Spreadable Cheese Ball and crackers.</span>
+            <div style="font-size: 10px; color: white;">All pricing and menu options are subject to change.</div>
+            <div class="form-nav">
+              <button type="button" class="prev-btn" onclick="nextSection(2)"><i class="fa-solid fa-arrow-left"></i>
+                Previous</button>
+              <button type="submit" class="submit">Send My Request! <i class="fa-solid fa-party-horn"></i></button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
+
+
+
+
+  </main>
+  <footer id="footer" style="margin-top: -70px;">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contact Information</h3>
+        <p><strong><i class="fa fa-map-pin" aria-hidden="true"></i>
+            Address:</strong><br>
+          <a href="https://www.google.com/maps/place//@40.242637,-76.2156168,17z">415 E Mount Airy Road<br>Stevens, PA
+            17578</a>
+        </p>
+        <p><strong><i class="fa fa-phone" aria-hidden="true"></i>
+            Phone:</strong> <a href="tel:7173363730">(717) 336-3730</a></p>
+        <p><strong><i class="fa fa-fax" aria-hidden="true"></i>
+            Fax:</strong> <a href="tel:7173365189">(717) 336-5189</a></p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Our Services</h3>
+        <ul>
+          <li><a href="hot-buffet">Hot Buffet Catering</a></li>
+          <li><a href="hor-doeuvres">Hors d'oeuvres</a></li>
+          <li><a href="custom-menu">Custom Menus</a></li>
+          <li><a href="events">Event Planning</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>About Us</h3>
+        <p>Established in 2002, we've been serving Lancaster County with authentic BBQ and exceptional catering services
+          for over 20 years.</p>
+        <div class="certifications">
+          <span class="cert-badge">Licensed & Certified</span>
+          <span class="cert-badge">Chamber Member</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="stuff">Established in 2002
+      <pre>&#8226;</pre><a href="https://www.google.com/search?q=Chamber+of+Commerce+R1116275">Chamber of Commerce
+        R1116275</a>
+      <pre>&#8226;</pre> Fully Licensed and Food Certified</p>
+      <pre>&#8226;</pre>
+      <p class="stuff">&copy; 2025 Big John Nolt's BBQ and Catering
+      <pre>&#8226;</pre> All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- Floating Action Buttons -->
+  <div class="floating-actions">
+    <a href="tel:7173363730" class="fab-item call-btn" title="Call Now">
+      <span><i class="fa fa-phone" aria-hidden="true"></i>
+      </span>
+    </a>
+    <a href="contact/" class="fab-item contact-btn" title="Schedule Event">
+      <span><i class="fa fa-calendar" aria-hidden="true"></i>
+      </span>
+    </a>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top" title="Back to Top"><svg xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+      <path
+        d="M342.6 81.4C330.1 68.9 309.8 68.9 297.3 81.4L137.3 241.4C124.8 253.9 124.8 274.2 137.3 286.7C149.8 299.2 170.1 299.2 182.6 286.7L288 181.3L288 552C288 569.7 302.3 584 320 584C337.7 584 352 569.7 352 552L352 181.3L457.4 286.7C469.9 299.2 490.2 299.2 502.7 286.7C515.2 274.2 515.2 253.9 502.7 241.4L342.7 81.4z" />
+    </svg></button>
+</body>
+
+
+</body>
+
+<script src="../resources/code/script.js"></script>
+
+</html>

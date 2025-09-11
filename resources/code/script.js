@@ -7,46 +7,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const slides = document.querySelectorAll('.carousel-slide');
   const track = document.getElementById('carouselTrack');
   const header = document.getElementById('header');
-  const logo = document.getElementById('logo');
+  
   const links = document.getElementById('links');
   const openNavBtn = document.getElementById('openNav');
   const phoneInput = document.getElementById('phone');
   const prevBtn = document.getElementById('prevSlide');
   const nextBtn = document.getElementById('nextSlide');
-  const steps = document.querySelectorAll(".progress-step");
-  const sections = document.querySelectorAll(".form-section");
-  const backToTopBtn = document.getElementById('backToTop');
   
+  const backToTopBtn = document.getElementById('backToTop');
   let stayOpen = false;
   let lastScroll = window.scrollY;
+  const main = document.querySelector('main');
+  let keepHeader = false;
+
   
-  
-  // === Contact Image z-index based on scroll ===
-  // === Contact Image z-index based on scroll ===
-  const pic = document.querySelector('.pic');
-  const pic2 = document.querySelector('.pic2');
-
-  if (pic && pic2) {
-    // Ensure elements have positioning for z-index
-    pic.style.position = pic.style.position || 'relative';
-    pic2.style.position = pic2.style.position || 'relative';
-    
-    function contactImageChange() {
-      if (window.scrollY > 355) {
-        pic.style.zIndex = "-3";
-        pic2.style.zIndex = "-2";
-        console.log('pic2 visible');
-      } else {
-        pic.style.zIndex = "-2";
-        pic2.style.zIndex = "-3";
-        console.log('pic visible');
-      }
-    }
-
-    contactImageChange(); // initial run
-    window.addEventListener('scroll', contactImageChange);
-  }
-
   // === Secure external links in .address ===
   document.querySelectorAll('.address a').forEach(link => {
     link.target = "_blank";
@@ -61,9 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (inputs[index]) inputs[index].placeholder = placeholderText;
   });
 
-  // === Auto-pair characters in textarea ===
+  // === Auto-pair characters in textarea (excluding quotes for safety) ===
   const textareas = document.querySelectorAll("textarea");
-  const pairs = { "(": ")", "[": "]", "{": "}", "<": ">", '"': '"', "'": "'" };
+  const pairs = { "(": ")", "[": "]", "{": "}", "<": ">" };
 
   textareas.forEach(textarea => {
     textarea.addEventListener("keydown", e => {
@@ -100,22 +74,29 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
+  
   // === Header Nav Toggle ===
   function showNav() {
     if (!links || !openNavBtn) return;
     links.style.transform = 'translateX(0)';
     openNavBtn.onclick = closeNav;
     openNavBtn.textContent = 'Close';
+    header.style.position = 'absolute';
   }
   function closeNav() {
     if (!links || !openNavBtn) return;
     links.style.transform = 'translateX(-100%)';
     openNavBtn.onclick = showNav;
     openNavBtn.textContent = 'Menu';
+    header.style.position = 'fixed';
+    keepHeaderVisible();
   }
   if (openNavBtn) openNavBtn.onclick = showNav;
-
+function keepHeaderVisible(){
+  header.style.position = 'fixed';
+  keepHeader = true;
+  header.style.transform = 'translateY(0)';
+}
   // === Details Animations ===
   details.forEach(detail => {
     const summary = detail.querySelector('summary');
@@ -176,45 +157,61 @@ document.addEventListener('DOMContentLoaded', () => {
   // === Footer ===
   if (footer) {
     footer.innerHTML = `
-    <div class="footer-content">
-        <div class="footer-section">
-            <h3>Contact Information</h3>
-            <p><strong><i class="fa fa-map-pin"></i> Address:</strong><br>
-                <a href="https://www.google.com/maps/place//@40.242637,-76.2156168,17z">
-                    415 E Mount Airy Road<br>Stevens, PA 17578
-                </a>
-            </p>
-            <p><strong><i class="fa fa-phone"></i> Phone:</strong> <a href="tel:7173363730">(717) 336-3730</a></p>
-            <p><strong><i class="fa fa-fax"></i> Fax:</strong> <a href="tel:7173365189">(717) 336-5189</a></p>
-        </div>
-        <div class="footer-section">
-            <h3>Our Services</h3>
-            <ul>
-                <li><a href="hot-buffet">Hot Buffet Catering</a></li>
-                <li><a href="hor-doeuvres">Hors d'oeuvres</a></li>
-                <li><a href="custom-menu">Custom Menus</a></li>
-                <li><a href="events">Event Planning</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h3>About Us</h3>
-            <p>Established in 2002, we've been serving Lancaster County with authentic BBQ and exceptional catering services for over 20 years.</p>
-            <div class="certifications">
-                <span class="cert-badge">Licensed & Certified</span>
-                <span class="cert-badge">Chamber Member</span>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p class="stuff">Established in 2002<br>
-            <span>&#8226;</span><br><a href="https://www.google.com/search?q=Chamber+of+Commerce+R1116275">Chamber of Commerce R1116275</a><br>
-            <span>&#8226;</span><br>Fully Licensed and Food Certified
-        </p>
-        <span>&#8226;</span>
-        <p class="stuff">&copy; 2025 Big John Nolt's BBQ and Catering <br><span>&#8226;</span><br> All Rights Reserved</p>
-        <span>&#8226;</span>
-        <p>Website by Isaac Boyd</p>
-    </div>`;
+<div class="footer-content">
+  <div class="footer-section">
+      <h3>Contact Information</h3>
+      <p><strong><i class="fa fa-map-pin" aria-hidden="true"></i>
+              Address:</strong><br>
+          <a href="https://www.google.com/maps/place//@40.242637,-76.2156168,17z">
+              415 E Mount Airy Road<br>Stevens, PA 17578
+          </a>
+      </p>
+      <p><strong><i class="fa fa-phone" aria-hidden="true"></i>
+              Phone:</strong> <a href="tel:7173363730">(717) 336-3730</a></p>
+      <p><strong><i class="fa fa-fax" aria-hidden="true"></i>
+              Fax:</strong> <a href="tel:7173365189">(717) 336-5189</a></p>
+  </div>
+
+  <div class="footer-section">
+      <h3>Our Services</h3>
+      <ul>
+          <li><a href="hot-buffet">Hot Buffet Catering</a></li>
+          <li><a href="hor-doeuvres">Hors d'oeuvres</a></li>
+          <li><a href="custom-menu">Custom Menus</a></li>
+          <li><a href="events">Event Planning</a></li>
+      </ul>
+  </div>
+
+  <div class="footer-section">
+      <h3>About Us</h3>
+      <p>Established in 2002, we've been serving Lancaster County with authentic BBQ and exceptional catering
+          services for over 20 years.</p>
+      <div class="certifications">
+          <span class="cert-badge">Licensed & Certified</span>
+          <span class="cert-badge">Chamber Member</span>
+      </div>
+  </div>
+</div>
+
+<div class="footer-bottom">
+  <p class="stuff">Established in 2002</p>
+  <pre class="dot">&#8226;</pre>
+  <p class="stuff">
+    <a href="https://www.google.com/search?q=Chamber+of+Commerce+R1116275">
+      Chamber of Commerce R1116275
+    </a>
+  </p>
+  <pre class="dot">&#8226;</pre>
+  <p class="stuff">Fully Licensed and Food Certified</p>
+  <pre class="dot">&#8226;</pre>
+  <p class="stuff">&copy; 2025 Big John Nolt's BBQ and Catering</p>
+  <pre class="dot">&#8226;</pre>
+  <p class="stuff">All Rights Reserved</p>
+  <pre class="dot">&#8226;</pre>
+  <p class="stuff">Website by Isaac Boyd</p>
+</div>
+
+    `;
   }
 
   // === Event Type Selector ===
@@ -226,14 +223,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // === Multi-step Form ===
   window.nextSection = function(section) {
+    const progress = document.getElementById('progress');
+    progress.style.display = 'none';
     const currentSection = document.querySelector('.form-section.active');
     const nextSection = document.getElementById(`section${section}`);
     const progressSteps = document.querySelectorAll('.progress-step');
     if (currentSection) currentSection.classList.remove('active');
     if (nextSection) nextSection.classList.add('active');
     progressSteps.forEach((step, index) => {
-      if (index < section) step.classList.add('active');
-      else step.classList.remove('active');
+      if (index < section) {
+        step.classList.add('active');
+        progress.value += 33.33333333333333;
+      }else {
+        step.classList.remove('active');
+        progress.value -= 33.33333333333333;
+      }
+      
     });
   };
 
@@ -242,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const image = document.querySelector('.bg-image');
     if (!image) return;
     const y = window.scrollY;
-    image.style.transform = `translateY(${y / 3}px) scale(${Math.min(1.3, 1 + y / 1000)})`;
+    image.style.transform = `translateY(${y / 3}px)`;
   }
 
   // === Back to Top Button ===
@@ -251,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
       backToTopBtn.style.display = window.scrollY > 500 ? 'block' : 'none';
       backToTopBtn.style.backgroundColor = window.scrollY > 510 ? 'rgb(78, 205, 196)' : 'transparent';
       backToTopBtn.style.color = window.scrollY > 510 ? 'black' : 'transparent';
-      backToTopBtn.innerHTML = `<i class="fa-solid fa-arrow-up fa-bounce" style="color: #000000;"></i>`;
+      backToTopBtn.innerHTML = `<i class="fa-solid fa-arrow-up" style="color: #000000;"></i>`;
     });
     backToTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -326,9 +331,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (header) {
       if (currentScroll > lastScroll && currentScroll > 150 && !stayOpen) {
         header.style.transform = 'translateY(-100%)';
+        header.style.backgroundColor = 'transparent';
+        header.style.position = 'fixed';
       } else if (currentScroll < lastScroll) {
         header.style.transform = 'translateY(0)';
         header.style.position = 'fixed';
+        header.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
       }
     }
     heroImageMove();
