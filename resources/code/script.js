@@ -20,12 +20,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const main = document.querySelector('main');
   let keepHeader = false;
 
-  
   // === Secure external links in .address ===
   document.querySelectorAll('.address a').forEach(link => {
     link.target = "_blank";
     link.rel = "noopener noreferrer";
   });
+  const box = document.getElementById("backToTop");
+// hover back to top to go to top
+  box.addEventListener("mouseenter", () => {
+    // Smooth scroll with options
+    window.scrollTo({
+      top: 0,           // Y position
+      behavior: "smooth"  // same as CSS
+    });
+
+  });
+
+
 
   // === Label placeholders (remove colon) ===
   const inputs = document.querySelectorAll('input');
@@ -175,7 +186,7 @@ function keepHeaderVisible(){
   <div class="footer-section">
       <h3>Our Services</h3>
       <ul>
-          <li><a href="hot-buffet">Hot Buffet Catering</a></li>
+          <li><a href="hot-buffet">Hot Buffet</a></li>
           <li><a href="hor-doeuvres">Hors d'oeuvres</a></li>
           <li><a href="custom-menu">Custom Menus</a></li>
           <li><a href="events">Event Planning</a></li>
@@ -343,5 +354,5 @@ function keepHeaderVisible(){
     lastScroll = currentScroll;
   });
 
-  console.log(window.innerWidth <= 1200 ? "Mobile script running" : "Desktop script running");
-});
+    console.log(window.innerWidth <= 1200 ? "Mobile script running" : "Desktop script running");
+  }); // closes DOMContentLoaded correctly

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iOS/Mac Rubber Band Scroll</title>
+<style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden; /* prevent native scrollbars */
+  }
+
+  #scroll-wrapper {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+
+  #content {
+    min-height: 200vh;
+    min-width: 200vw;
+    background: linear-gradient(45deg, #ff7b00, #a30000);
+    will-change: transform;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+</style>
+</head>
+<body>
+  <div id="scroll-wrapper">
+    <div id="content">
+      <h1 style="color:white; padding:20px;">True Rubber Band Demo</h1>
+    </div>
+  </div>
+
+<script>
+const wrapper = document.getElementById("scroll-wrapper");
+const content = document.getElementById("content");
+
+let overscrollY = 0;
+let overscrollX = 0;
+let animating = false;
+
+function applyTransform() {
+  content.style.transform = `translate(${overscrollX}px, ${overscrollY}px)`;
+}
+
+// handle wheel
+wrapper.addEventListener("wheel", (e) => {
+  const maxY = wrapper.scrollHeight - wrapper.clientHeight;
+  const maxX = wrapper.scrollWidth - wrapper.clientWidth;
+
+  let atTop = wrapper.scrollTop <= 0;
+  let atBottom = wrapper.scrollTop >= maxY;
+  let atLeft = wrapper.scrollLeft <= 0;
+  let atRight = wrapper.scrollLeft >= maxX;
+
+  if ((atTop && e.deltaY < 0) || (atBottom && e.deltaY > 0)) {
+    overscrollY += e.deltaY / 3; // dampen
+    applyTransform();
+    e.preventDefault();
+  }
+  if ((atLeft && e.deltaX < 0) || (atRight && e.deltaX > 0)) {
+    overscrollX += e.deltaX / 3;
+    applyTransform();
+    e.preventDefault();
+  }
+
+  clearTimeout(animating);
+  animating = setTimeout(() => {
+    overscrollY = 0;
+    overscrollX = 0;
+    content.style.transition = "transform 0.5s cubic-bezier(0.25,1,0.5,1)";
+    applyTransform();
+    setTimeout(() => {
+      content.style.transition = "";
+    }, 500);
+  }, 50);
+}, { passive: false });
+
+// also support touch
+let lastY = 0, lastX = 0;
+wrapper.addEventListener("touchstart", (e) => {
+  lastY = e.touches[0].clientY;
+  lastX = e.touches[0].clientX;
+});
+
+wrapper.addEventListener("touchmove", (e) => {
+  const y = e.touches[0].clientY;
+  const x = e.touches[0].clientX;
+  const dy = lastY - y;
+  const dx = lastX - x;
+
+  const maxY = wrapper.scrollHeight - wrapper.clientHeight;
+  const maxX = wrapper.scrollWidth - wrapper.clientWidth;
+
+  let atTop = wrapper.scrollTop <= 0;
+  let atBottom = wrapper.scrollTop >= maxY;
+  let atLeft = wrapper.scrollLeft <= 0;
+  let atRight = wrapper.scrollLeft >= maxX;
+
+  if ((atTop && dy < 0) || (atBottom && dy > 0)) {
+    overscrollY -= dy / 2;
+    applyTransform();
+    e.preventDefault();
+  }
+  if ((atLeft && dx < 0) || (atRight && dx > 0)) {
+    overscrollX -= dx / 2;
+    applyTransform();
+    e.preventDefault();
+  }
+
+  lastY = y;
+  lastX = x;
+}, { passive: false });
+
+wrapper.addEventListener("touchend", () => {
+  overscrollY = 0;
+  overscrollX = 0;
+  content.style.transition = "transform 0.5s cubic-bezier(0.25,1,0.5,1)";
+  applyTransform();
+  setTimeout(() => {
+    content.style.transition = "";
+  }, 500);
+});
+</script>
+</body>
+</html>

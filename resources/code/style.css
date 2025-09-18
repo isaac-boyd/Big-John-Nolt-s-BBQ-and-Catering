@@ -11,8 +11,17 @@ details:hover p {
   max-height: 500px;
 
 }
+*::selection {
+background: rgba(0, 0, 0, 0.2);
+color: inherit;
 
-
+}
+/*
+.link[page], .link2[page] {
+  color: #ff0000;
+  text-decoration: underline green;
+}
+*/
 .button {
   background: linear-gradient(135deg, #a30000 0%, #ff7b00 50%, #a30000 100%);
   color: white;
@@ -1183,6 +1192,11 @@ input:checked {
 .gallery-overlay h3,
 .gallery-overlay p {
   color: white;
+}
+
+.gallery-item:hover .gallery-overlay .top-text {
+  transform: translateY(-880);
+  font-size: 1.17em;
 }
 
 .gallery-item:hover .gallery-overlay {
